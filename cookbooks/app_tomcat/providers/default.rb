@@ -261,7 +261,7 @@ action :setup_vhost do
     # Apache fix on RHEL
     file "/etc/httpd/conf.d/README" do
       action :delete
-      only_if do node[:platform] == "redhat" end
+      only_if "test -e /etc/httpd/conf.d/README"
     end
 
     log "  Generating new apache ports.conf"
